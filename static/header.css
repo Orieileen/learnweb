@@ -1,0 +1,19 @@
+  html,body{
+    height: 100%;
+    margin: 0;
+  }
+  header{
+    height: 50px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    color: red;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #000000;
+  }
+  span{
+    flex-grow: 1; 
+    text-align: center;
+  }
