@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="{% static 'header.css' %}">
+  <link rel="stylesheet" href="{% static 'css/header.css' %}">
 </head>
 
 <header>
@@ -16,5 +16,19 @@
 <body>
   <h1>十年高端设计经验</h1>
   <div>科技创新大平台，智慧生活引擎</div>
+  <div>
+    <img class="img1" src="{% static 'img/000.jpg' %}" alt="">
+  </div>
+<section>
+  <h2>team introduce</h2>
+  <div>
+    {% for item in team %}
+    <div>
+      <img class="img2" src="{{ item.avatar.url }}" alt="">
+      {{ item.name }}-{{ item.title }}
+    </div>
+    {% endfor %}
+  </div>
+</section>
 </body>
 </html>
