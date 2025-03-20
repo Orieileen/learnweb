@@ -14,11 +14,14 @@
   <span>成功案例</span>
 </header>
 <body>
-  <h1>十年高端设计经验</h1>
-  <div>科技创新大平台，智慧生活引擎</div>
-  <div>
-    <img class="img1" src="{% static 'img/000.jpg' %}" alt="">
-  </div>
+  <section>
+    {% for slide in slide %}
+    <h1 class="first slideshow">{{ slide.title}}</h1>
+    <h2>{{ slide.content}}</h2>
+    <div><img class="img1" src="{{ slide.image.url }}" alt=""></div>
+    {% endfor %}
+  </section>
+
 <section>
   <h2>team introduce</h2>
   <div>
