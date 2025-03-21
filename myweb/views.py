@@ -9,4 +9,6 @@ def index(request):
     team = Team.objects.all().order_by('rank')
     slide = Slide.objects.all()
     news = News.objects.filter(category_id=1).order_by('-created_at')[:3]
-    return render(request, 'index.html', {'team': team,'slide': slide,'news': news})
+    cases = News.objects.filter().exclude(category_id=1).order_by('-created_at')[:3]
+    print(cases)
+    return render(request, 'index.html', {'team': team, 'slide': slide, 'news': news, 'cases':cases})

@@ -14,40 +14,77 @@
   <span>成功案例</span>
 </header>
 <body>
-  <section>
-    <h1>slide</h1>
-    {% for slide in slide %}
-    <h1 class="first slideshow">{{ slide.title}}</h1>
-    <h2>{{ slide.content}}</h2>
-    <div><img class="img1" src="{{ slide.image.url }}" alt=""></div>
-    {% endfor %}
-  </section>
+<section class="slide">
+  <h1>slide</h1>
+  {% for slide in slide %}
+  <h1 class="first slideshow">{{ slide.title}}</h1>
+  <h2>{{ slide.content}}</h2>
+  <div><img class="img1" src="{{ slide.image.url }}" alt=""></div>
+  {% endfor %}
+</section>
 <br><hr>
-<section>
+
+<section class="team">
   <h2>team introduce</h2>
   <div>
-    {% for item in team %}
+    {% for team in team %}
     <div>
-      <img class="img2" src="{{ item.avatar.url }}" alt="">
-      {{ item.name }}-{{ item.title }}
+      <img class="img2" src="{{ team.avatar.url }}" alt="">
+      {{ team.name }}-{{ team.title }}
     </div>
     {% endfor %}
   </div>
 </section>
 <br><hr>
+
 <section class="news">
   <h2>news</h2>
   <div>
-    {% for item in news %}
-    <img src="{{ item.cover.url }}" alt="">
-    <div>{{ item.title }}</div>
-    <div>创建于{{ item.created_at }}</div>
-    <div>更新于{{ item.updated_at }}</div>
-    <article>{{ item.content|striptags|slice:'2' }}...</article>
-    <button><a href="news/{{ item.id }}">阅读更多</a></button>
+    {% for news in news %}
+    <img src="{{ news.cover.url }}" alt="">
+    <div>{{ news.title }}</div>
+    <div>创建于{{ news.created_at }}</div>
+    <div>更新于{{ news.updated_at }}</div>
+    <article>{{ news.content|striptags|slice:'2' }}...</article>
+    <button><a href="news/{{ news.id }}">阅读更多</a></button>
     {% endfor %}
   </div>
 </section>
 <br><hr>
+
+<section class="cases">
+  <h2>成功案例</h2>
+  <button data-filter="*">全部</button>
+  <button data-filter="category_2">企业集团</button>
+  <button data-filter="category_3">移动金融</button>
+  <button data-filter="category_4">设计建筑</button>
+</section>
+<br><hr>
+  <div>
+    {% for cases in cases %}
+    <div class="category_{{ cases.category_id }}" style="display: inline-block;">
+      <a href="news/{{ cases.id }}"><img  style="height: 100px; width: 100px;" src="{{ cases.cover.url }}" alt=""></a>
+    </div>
+    {% endfor %}
+  </div>  
+<section>
+
+</section>
+<br><hr>
 </body>
 </html>
+
+<script>
+  document.querySelectorAll("button[data-filter]").forEach(button => {
+    button.addEventListener("click", function () {
+      let filterClass = this.getAttribute("data-filter");
+      document.querySelectorAll("div[class^='category_']").forEach(div => {
+        if (filterClass === "*" || div.classList.contains(filterClass)) {
+          div.style.display = "inline-block";
+        } else {
+          div.style.display = "none";
+        }
+      });
+    });
+  });
+</script>
