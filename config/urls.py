@@ -24,6 +24,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', views.index, name='index'),
     path('news/', include('news.urls')),
+    #ckeditor是一个app和admin一样，已经自动设置好了，include就可以用
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('admin/', admin.site.urls),
 ]
 

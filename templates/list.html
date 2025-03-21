@@ -6,6 +6,9 @@
   <title>Document</title>
 </head>
 <body>
-  
+  {% for list in news_list %}
+  <h2><a href="/news/{{ list.id }}">{{ list.title }}</a></h2>
+  {% endfor %}
+
 </body>
-</html>
+</html> 

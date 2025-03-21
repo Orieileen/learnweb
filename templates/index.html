@@ -15,13 +15,14 @@
 </header>
 <body>
   <section>
+    <h1>slide</h1>
     {% for slide in slide %}
     <h1 class="first slideshow">{{ slide.title}}</h1>
     <h2>{{ slide.content}}</h2>
     <div><img class="img1" src="{{ slide.image.url }}" alt=""></div>
     {% endfor %}
   </section>
-
+<br><hr>
 <section>
   <h2>team introduce</h2>
   <div>
@@ -33,5 +34,20 @@
     {% endfor %}
   </div>
 </section>
+<br><hr>
+<section class="news">
+  <h2>news</h2>
+  <div>
+    {% for item in news %}
+    <img src="{{ item.cover.url }}" alt="">
+    <div>{{ item.title }}</div>
+    <div>创建于{{ item.created_at }}</div>
+    <div>更新于{{ item.updated_at }}</div>
+    <article>{{ item.content|striptags|slice:'2' }}...</article>
+    <button><a href="news/{{ item.id }}">阅读更多</a></button>
+    {% endfor %}
+  </div>
+</section>
+<br><hr>
 </body>
 </html>
